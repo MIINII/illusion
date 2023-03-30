@@ -12,10 +12,7 @@ let router = createHashRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      {
-        path: 'SignIn',
-        element: <SignIn />,
-      },
+      { path: 'SignIn', element: <SignIn /> },
     ],
   },
 ]);

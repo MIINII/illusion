@@ -1,3 +1,42 @@
 .headerWrapper {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background: $colors-gradient;
+
+  & > span {
+    color: $colors-white;
+    font-size: $font-size-large;
+    padding: 20px;
+  }
+}
+
+.budgeInput {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  height: 42px;
+  min-width: 400px;
+  border-radius: 30px;
+  border: none;
+  background: $colors-white;
+  margin-top: 58px;
+
+  & > input {
+    display: flex;
+    width: 100%;
+    border: none;
+  }
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  background-color: $colors-white;
+  border: transparent;
+  padding: 10px;
+  font-size: $font-size-medium;
+  color: $colors-blue;
 }

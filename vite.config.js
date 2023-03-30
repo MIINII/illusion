@@ -30,7 +30,7 @@ export default defineConfig({
         additionalData: `
           @import '@/styles/base/_reset.scss';
           @import '@/styles/base/_base.scss';
-          @import '@/styles/abstracts/_variable.scss';
+          @import '@/styles/base/_variable.scss';
         `,
       },
     },
