@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid $colors-gray-200;
+}
+
+.inIcon {
+  width: 33px;
+  height: 33px;
+  border-radius: 100%;
+  background: $colors-pink;
+}
+
+.outIcon {
+  width: 33px;
+  height: 33px;
+  border-radius: 100%;
+  background: $colors-blue;
+}
+
+.moneyName {
+  font-size: $font-size-default;
+}

@@ -1,0 +1,42 @@
+.BtnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 100%;
+}
+
+.moneyRecord {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  & > h2 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $colors-content;
+    width: 100%;
+    padding: 25px 0;
+    border-bottom: 1px solid $colors-gray-200;
+  }
+}
+
+.incomeWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.kindOfMoney {
+  font-family: 'BMJUA';
+  font-size: $font-size-large;
+  color: $colors-deep-pink;
+}
+
+.incomeMoney {
+  color: $colors-deep-blue;
+  font-size: $font-size-large;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-120;
+}

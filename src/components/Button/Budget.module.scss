@@ -1,7 +1,59 @@
+.border {
+  display: flex;
+  justify-content: space-between;
+  background: $colors-gradient;
+  padding: 3px;
+  border-radius: 12px;
+
+  &:hover {
+    background: $colors-gradient;
+    background-size: 150% 150%;
+    animation: slideBg 2s ease infinite;
+  }
+}
+
+@keyframes slideBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .buttonWrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   min-width: 496px;
-}
+  padding: 22px;
+  border-radius: 10px;
+  border: none;
+  background-color: $colors-white;
+  cursor: pointer;
 
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 12px;
+
+    & > p {
+      width: auto;
+      min-width: 200px;
+      font-size: 18px;
+      font-weight: $font-weight-bold;
+      color: $colors-content;
+      text-align: left;
+    }
+
+    & > span {
+      font-size: $font-size-default;
+      font-weight: $font-weight-regular;
+      color: $colors-gray-400;
+    }
+  }
+}
