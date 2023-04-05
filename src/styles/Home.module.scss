@@ -24,19 +24,27 @@
 .incomeWrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+}
+
+.kindOfIncome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 474px;
+  padding-bottom: 20px;
 }
 
 .kindOfMoney {
   font-family: 'BMJUA';
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
   color: $colors-deep-pink;
 }
 
 .incomeMoney {
-  color: $colors-deep-blue;
-  font-size: $font-size-large;
+  color: $colors-content;
+  font-size: $font-size-medium;
   font-weight: $font-weight-bold;
   line-height: $line-height-120;
 }

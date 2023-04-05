@@ -22,21 +22,25 @@ const Home = () => {
       <main className={styles.moneyRecord}>
         <h2>1월</h2>
 
-        <div>
-          <section className={styles.incomeWrapper}>
-            <h3 className={styles.kindOfMoney}>💰 고정으로 들어오는 돈</h3>
-            <span className={styles.incomeMoney}>2,400,000원</span>
-          </section>
-          <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
-        </div>
+        <section className={styles.incomeWrapper}>
+          <div>
+            <section className={styles.kindOfIncome}>
+              <h3 className={styles.kindOfMoney}>💰 고정으로 들어오는 돈</h3>
+              <span className={styles.incomeMoney}>2,400,000원</span>
+            </section>
+            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
+          </div>
 
-        <div>
-          <section className={styles.incomeWrapper}>
-            <h3 className={styles.kindOfMoney}>🍀 혹여나 들어온 돈</h3>
-            <span className={styles.incomeMoney}>2,400,000원</span>
-          </section>
-          <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
-        </div>
+          <div>
+            <section className={styles.kindOfIncome}>
+              <h3 className={styles.kindOfMoney}>🍀 혹여나 들어온 돈</h3>
+              <span className={styles.incomeMoney}>2,400,000원</span>
+            </section>
+            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
+            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
+            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
+          </div>
+        </section>
       </main>
     </Fragment>
   );

@@ -5,13 +5,14 @@ import company from '@/assets/icon-company.svg';
 
 const MoneyRecord = ({ inOrOut, kindOfIcon }) => {
   const icons = {
-    company: '@/assets/icon-company.svg',
+    company: { company },
   };
+  console.log('🚀 ⁝ MoneyRecord ⁝ icons:', icons);
 
   return (
     <div className={styles.wrapper}>
       <div className={inOrOut === 'in' ? styles.inIcon : styles.outIcon}>
-        <img src={icons.kindOfIcon} alt='sds' />
+        <img src={icons.kindOfIcon} alt='sds' width='20px' />
       </div>
       <h4 className={styles.moneyName}>월급</h4>
       <span>[매월10일]</span>
