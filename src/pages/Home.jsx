@@ -8,12 +8,12 @@ import goneMoney from '@/assets/hand-coins.svg';
 import styles from '@/styles/Home.module.scss';
 
 // components
-import BudgetButton from '@/components/Button/BudgetButton';
-import MoneyRecord from '@/components/MoneyRecord/MoneyRecord';
+import { BudgetButton, MoneyRecord, IncomeModal } from '@/components';
 
 const Home = () => {
   return (
     <Fragment>
+      <IncomeModal />
       <div className={styles.BtnWrapper}>
         <BudgetButton btnImg={pig} btnName={'혹시나 들어온 돈'} btnNameEng={'Income'} btnAlt={'들어온돈'} />
         <BudgetButton btnImg={goneMoney} btnName={'내 손을 떠난 돈'} btnNameEng={'Expenditure'} btnAlt={'나간돈'} />

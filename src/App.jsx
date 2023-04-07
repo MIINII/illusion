@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import './App.css';
 import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import Layout from '@/components/Layout/Layout';
+import { Layout } from '@/components';
 
 const Home = lazy(() => import('./pages/Home'));
 const SignIn = lazy(() => import('./pages/SignIn'));
