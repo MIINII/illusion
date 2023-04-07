@@ -1,0 +1,11 @@
+.BtnWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  background-color: $colors-white;
+  border-radius: 10px;
+  border: 2px solid $colors-deep-blue;
+  cursor: pointer;
+}

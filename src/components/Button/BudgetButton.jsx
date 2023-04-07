@@ -4,7 +4,7 @@ import styles from '@/components/Button/Budget.module.scss';
 // icons
 import { BsPlusCircleFill } from 'react-icons/bs';
 
-const BudgetButton = ({ btnImg, btnName, btnNameEng, btnAlt }) => {
+export const BudgetButton = ({ btnImg, btnName, btnNameEng, btnAlt }) => {
   const onClick = () => {
     console.log('클릭');
   };
@@ -28,5 +28,3 @@ const BudgetButton = ({ btnImg, btnName, btnNameEng, btnAlt }) => {
     </section>
   );
 };
-
-export default BudgetButton;
