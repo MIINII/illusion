@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
 // components
-import Header from '@/components/Header/Header';
+import { Header } from '@/components';
 
-export default function Layout({ children }) {
+export function Layout({ children }) {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ export default function Layout({ children }) {
     </>
   );
 }
-3
+3;

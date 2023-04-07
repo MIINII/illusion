@@ -3,7 +3,7 @@ import styles from '@/components/MoneyRecord/MoneyRecord.module.scss';
 // icons
 import company from '@/assets/icon-company.svg';
 
-const MoneyRecord = ({ inOrOut, kindOfIcon }) => {
+export const MoneyRecord = ({ inOrOut, kindOfIcon }) => {
   const icons = {
     company: { company },
   };
@@ -20,5 +20,3 @@ const MoneyRecord = ({ inOrOut, kindOfIcon }) => {
     </div>
   );
 };
-
-export default MoneyRecord;
