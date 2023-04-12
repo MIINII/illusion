@@ -1,15 +1,34 @@
-.ModalBox {
+.Modal {
   // display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
   z-index: 100;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  height: 50%;
-  background-color: $colors-white;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  & > .ModalBox {
+    width: 60%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: $colors-white;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    & h3 {
+      text-align: center;
+      color: $colors-deep-blue;
+      font-size: $font-size-large;
+      font-weight: $font-weight-bold;
+      padding: 30px;
+    }
+  }
 }
 
 .BtnWrapper {

@@ -14,7 +14,7 @@ export const Header = () => {
         <img src={Logo} alt='일루전 로고' width='357' />
       </h1>
       <span>환상속의 돈들을 실체화 시켜봐요</span>
-      <BudgetInput />
+      <BudgetInput placeHolder={'이번달에 사용할 금액을 적어주세요!!ㅎㅎ'} />
     </div>
   );
 };
