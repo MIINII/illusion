@@ -4,6 +4,7 @@ export * from './Button/SecondButton';
 export * from './Header/Header';
 export * from './Header/Header';
 export * from './Layout/Layout';
-export * from './Modal/IncomeModal';
+export * from './Modal/AssetModal';
 export * from './MoneyRecord/MoneyRecord';
 export * from './Input/BudgetInput';
+export * from './CheckBox/CheckBox';

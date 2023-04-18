@@ -1,0 +1,24 @@
+[type='radio'] {
+  vertical-align: middle;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: max(0.0625rem, 0.1em) solid $colors-deep-blue;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+[type='radio']:checked {
+  border: 6px solid $colors-deep-blue;
+}
+
+.radioStyle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  & > label {
+    line-height: $line-height-170;
+  }
+}

@@ -7,7 +7,6 @@ export const MoneyRecord = ({ inOrOut, kindOfIcon }) => {
   const icons = {
     company: { company },
   };
-  console.log('🚀 ⁝ MoneyRecord ⁝ icons:', icons);
 
   return (
     <div className={styles.wrapper}>

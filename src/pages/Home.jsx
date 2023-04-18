@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 
 // img
 import pig from '@/assets/money-pig.svg';
@@ -8,15 +8,50 @@ import goneMoney from '@/assets/hand-coins.svg';
 import styles from '@/styles/Home.module.scss';
 
 // components
-import { BudgetButton, MoneyRecord, IncomeModal } from '@/components';
+import { BudgetButton, MoneyRecord, AssetModal } from '@/components';
 
 const Home = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  useEffect(() => {
+    document.body.style = `overflow:hidden`;
+    return () => (document.body.style = `overflow:auto`);
+  }, []);
+
   return (
     <Fragment>
-      <IncomeModal />
       <div className={styles.BtnWrapper}>
-        <BudgetButton btnImg={pig} btnName={'혹시나 들어온 돈'} btnNameEng={'Income'} btnAlt={'들어온돈'} />
-        <BudgetButton btnImg={goneMoney} btnName={'내 손을 떠난 돈'} btnNameEng={'Expenditure'} btnAlt={'나간돈'} />
+        <BudgetButton
+          btnClick={openModal}
+          btnImg={pig}
+          btnName={'혹시나 들어온 돈'}
+          btnNameEng={'Income'}
+          btnAlt={'들어온돈'}
+        />
+        {modalOpen && (
+          <AssetModal
+            modalTitle={'놀랍게도 수입이 있어요!🥰'}
+            modalPlaceholder={'혹시나 들어온 돈이 있나요?'}
+            btnName={'돈이 들어왔따!ㅋㅋ'}
+            close={closeModal}
+          />
+        )}
+
+        <BudgetButton
+          btnClick={openModal}
+          btnImg={goneMoney}
+          btnName={'내 손을 떠난 돈'}
+          btnNameEng={'Expenditure'}
+          btnAlt={'나간돈'}
+        />
       </div>
 
       <main className={styles.moneyRecord}>

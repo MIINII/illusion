@@ -4,14 +4,10 @@ import styles from '@/components/Button/Budget.module.scss';
 // icons
 import { BsPlusCircleFill } from 'react-icons/bs';
 
-export const BudgetButton = ({ btnImg, btnName, btnNameEng, btnAlt }) => {
-  const onClick = () => {
-    console.log('클릭');
-  };
-
+export const BudgetButton = ({ btnImg, btnName, btnNameEng, btnAlt, btnClick }) => {
   return (
     <section className={styles.border}>
-      <button onClick={onClick} className={styles.buttonWrapper} type='submit'>
+      <button onClick={btnClick} className={styles.buttonWrapper} type='submit'>
         <img src={btnImg} alt={btnAlt} width='80px' height='80px' />
         <div>
           <p>{btnName}</p>

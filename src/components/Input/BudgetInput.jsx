@@ -3,7 +3,7 @@ import styles from '@/components/Input/BudgetInput.module.scss';
 // icons
 import { FaArrowRight } from 'react-icons/fa';
 
-export const BudgetInput = ({ placeHolder }) => {
+export const BudgetInput = ({ placeHolder, inputWidth }) => {
   return (
     <>
       <form className={styles.budgeInput} action='submit'>
