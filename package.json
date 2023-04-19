@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
+    "uuidv4": "^6.2.13",
     "vite-plugin-babel-macros": "^1.0.6",
     "vite-plugin-svgr": "^2.4.0"
   },

@@ -3,11 +3,17 @@ import styles from '@/components/Modal/AssetModal.module.scss';
 // components
 import { BudgetInput, CheckBox, PrimaryButton, SecondButton } from '@/components';
 
+// lib
+import { v4 as uuidv4 } from 'uuid';
+
 // img
 import Logo from '@/assets/logo.svg';
 
 export const AssetModal = (props) => {
-  const { modalTitle, modalPlaceholder, btnName, close } = props;
+  const { modalType, modalTitle, modalPlaceholder, btnName, close } = props;
+
+  const income = ['용돈', '월급', '줍줍', '기타'];
+  const out = ['외식', '쇼핑', '선물', '기타'];
 
   return (
     // <div className={open ? 'styles.Modal styles.ModalOpen ' : 'styles.Modal'}>
@@ -28,10 +34,9 @@ export const AssetModal = (props) => {
             marginTop: '20px',
           }}
         >
-          <CheckBox radioValue={'월급'} />
-          <CheckBox radioValue={'용돈'} />
-          <CheckBox radioValue={'줍줍'} />
-          <CheckBox radioValue={'기타'} />
+          {modalType.map((list) => (
+            <CheckBox radioValue={list} key={uuidv4()} />
+          ))}
         </div>
 
         <div className={styles.BtnWrapper}>
