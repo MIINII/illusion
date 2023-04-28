@@ -9,41 +9,40 @@ import { v4 as uuidv4 } from 'uuid';
 // img
 import Logo from '@/assets/logo.svg';
 
-export const AssetModal = (props) => {
-  const { modalType, modalTitle, modalPlaceholder, btnName, close } = props;
-
-  const income = ['용돈', '월급', '줍줍', '기타'];
-  const out = ['외식', '쇼핑', '선물', '기타'];
-
+export const AssetModal = ({ modalOption }) => {
   return (
-    // <div className={open ? 'styles.Modal styles.ModalOpen ' : 'styles.Modal'}>
-    <div className={styles.Modal}>
-      <div className={styles.ModalBox}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src={Logo} width={'150px'} />
-          <h3>{modalTitle}</h3>
-        </div>
-        <BudgetInput placeHolder={modalPlaceholder} />
+    <>
+      {modalOption?.show && (
+        <div className={styles.Modal} onClick={modalOption.onClose}>
+          <div className={styles.ModalBox}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={Logo} width={'150px'} />
+              <h3>{modalOption.title}</h3>
+            </div>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            width: '50%',
-            marginTop: '20px',
-          }}
-        >
-          {modalType.map((list) => (
-            <CheckBox radioValue={list} key={uuidv4()} />
-          ))}
-        </div>
+            <BudgetInput placeHolder={modalOption.placeholder} />
 
-        <div className={styles.BtnWrapper}>
-          <PrimaryButton BtnName={btnName} />
-          <SecondButton BtnName={'취소'} onClick={close} />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                width: '50%',
+                marginTop: '20px',
+              }}
+            >
+              {modalOption.type.map((list) => (
+                <CheckBox radioValue={list} key={uuidv4()} />
+              ))}
+            </div>
+
+            <div className={styles.BtnWrapper}>
+              <PrimaryButton BtnName={modalOption.btnTitle} />
+              <SecondButton BtnName={'취소'} onClick={modalOption.onClose} />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };

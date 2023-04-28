@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 
 // img
 import pig from '@/assets/money-pig.svg';
@@ -9,61 +9,64 @@ import styles from '@/styles/Home.module.scss';
 
 // components
 import { BudgetButton, MoneyRecord, AssetModal } from '@/components';
+import { useModal } from '@/hooks';
 
 const Home = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOption, showModal] = useModal();
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
+  const onClick = useCallback(() => {
+    const income = ['용돈', '월급', '줍줍', '기타'];
+    const out = ['외식', '쇼핑', '선물', '기타'];
 
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+    const incomeOption = {
+      show: true,
+      type: ['용돈', '월급', '줍줍', '기타'],
+      title: '놀랍게도 수입이 있어요!🥰',
+      placeholder: '혹시나 들어온 돈이 있나요?',
+      btnTitle: '돈이 들어왔따!ㅋㅋ',
+      onSubmit: () => {},
+      element: null,
+    };
 
-  useEffect(() => {
+    // showModal(
+    //   true,
+    //   income,
+    //   '놀랍게도 수입이 있어요!🥰',
+    //   '혹시나 들어온 돈이 있나요?',
+    //   '돈이 들어왔따!ㅋㅋ',
+    //   () => console.log('모달 on'),
+    //   null
+    // );
+    showModal(incomeOption);
+  }, [modalOption]);
+  /** useEffect(() => {
     document.body.style = `overflow:hidden`;
     return () => (document.body.style = `overflow:auto`);
-  }, []);
+  }, []); */
 
   return (
     <Fragment>
       <div className={styles.BtnWrapper}>
         <div>
           <BudgetButton
-            btnClick={openModal}
+            btnClick={onClick}
             btnImg={pig}
             btnName={'혹시나 들어온 돈'}
             btnNameEng={'Income'}
             btnAlt={'들어온돈'}
           />
-          {modalOpen && (
-            <AssetModal
-            modalType={income}
-              modalTitle={'놀랍게도 수입이 있어요!🥰'}
-              modalPlaceholder={'혹시나 들어온 돈이 있나요?'}
-              btnName={'돈이 들어왔따!ㅋㅋ'}
-              close={closeModal}
-            />
-          )}
+          <AssetModal modalOption={modalOption} />
         </div>
 
         <div>
           <BudgetButton
-            btnClick={openModal}
+            onClick={onClick}
             btnImg={goneMoney}
             btnName={'내 손을 떠난 돈'}
             btnNameEng={'Expenditure'}
             btnAlt={'나간돈'}
           />
-          {modalOpen && (
-            <AssetModal
-              modalTitle={'어디다 썼어요..?😶'}
-              modalPlaceholder={'얼마나 나갔는지 말해주세요'}
-              btnName={'돈나감요 ㅠ'}
-              close={closeModal}
-            />
-          )}
+          <AssetModal modalOption={modalOption} />
         </div>
       </div>
 
