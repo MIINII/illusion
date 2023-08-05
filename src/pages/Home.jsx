@@ -9,9 +9,12 @@ import styles from '@/styles/Home.module.scss';
 
 // components
 import { BudgetButton, MoneyRecord, AssetModal } from '@/components';
+import { getIncome } from '@/firebase';
 
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [incomes, setIncomes] = useState([]);
+  const [date, setDate] = useState({});
 
   const openModal = () => {
     setModalOpen(true);
@@ -23,6 +26,28 @@ const Home = () => {
 
   useEffect(() => {
     document.body.style = `overflow:hidden`;
+
+    getIncome().then((income) => {
+      let incomeData = income;
+      const formattedDates = [];
+
+      // 날짜변경
+      for (let i = 0; i < incomeData.length; i++) {
+        const incomeDate = incomeData[i].income_date.toDate();
+
+        const year = incomeDate.getFullYear();
+        const month = ('0' + (incomeDate.getMonth() + 1)).slice(-2);
+        const day = ('0' + incomeDate.getDate()).slice(-2);
+
+        const formattedDate = `${year}-${month}-${day}`;
+        formattedDates.push({ income_id: incomeData[i].income_id, date: formattedDate });
+      }
+
+      setIncomes(incomeData.filter((item) => item.money_type == 1));
+      setDate(formattedDates);
+
+    });
+
     return () => (document.body.style = `overflow:auto`);
   }, []);
 
@@ -37,15 +62,13 @@ const Home = () => {
             btnNameEng={'Income'}
             btnAlt={'들어온돈'}
           />
-          {modalOpen && (
-            <AssetModal
-            modalType={income}
-              modalTitle={'놀랍게도 수입이 있어요!🥰'}
-              modalPlaceholder={'혹시나 들어온 돈이 있나요?'}
-              btnName={'돈이 들어왔따!ㅋㅋ'}
-              close={closeModal}
-            />
-          )}
+          <AssetModal
+            modalTitle={'놀랍게도 수입이 있어요!🥰'}
+            modalPlaceholder={'혹시나 들어온 돈이 있나요?'}
+            btnName={'돈이 들어왔따!ㅋㅋ'}
+            open={modalOpen}
+            close={closeModal}
+          />
         </div>
 
         <div>
@@ -56,14 +79,12 @@ const Home = () => {
             btnNameEng={'Expenditure'}
             btnAlt={'나간돈'}
           />
-          {modalOpen && (
-            <AssetModal
-              modalTitle={'어디다 썼어요..?😶'}
-              modalPlaceholder={'얼마나 나갔는지 말해주세요'}
-              btnName={'돈나감요 ㅠ'}
-              close={closeModal}
-            />
-          )}
+          <AssetModal
+            modalTitle={'어디다 썼어요..?😶'}
+            modalPlaceholder={'얼마나 나갔는지 말해주세요'}
+            btnName={'돈나감요 ㅠ'}
+            close={closeModal}
+          />
         </div>
       </div>
 
@@ -76,7 +97,6 @@ const Home = () => {
               <h3 className={styles.kindOfMoney}>💰 고정으로 들어오는 돈</h3>
               <span className={styles.incomeMoney}>2,400,000원</span>
             </section>
-            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
           </div>
 
           <div>
@@ -84,9 +104,17 @@ const Home = () => {
               <h3 className={styles.kindOfMoney}>🍀 혹여나 들어온 돈</h3>
               <span className={styles.incomeMoney}>2,400,000원</span>
             </section>
-            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
-            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
-            <MoneyRecord inOrOut={'in'} kindOfIcon={'company'} />
+
+            {incomes.map((income) => (
+              <MoneyRecord
+                key={income.income_id}
+                kindOfIcon='company'
+                income_name={income.income_name}
+                money={income.money}
+                inOrOut={income.money_type}
+                date={date.find((d) => d.income_id === income.income_id).date}
+              />
+            ))}
           </div>
         </section>
       </main>

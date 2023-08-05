@@ -1,11 +1,11 @@
 // Firebase
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 // Auth
 import { getAuth, onAuthStateChanged, getRedirectResult } from 'firebase/auth';
 
-const firebaseApp = {
+const firebaseConfig = {
   apiKey: import.meta.env.VITE_REACT_APP_APIKEY,
   authDomain: import.meta.env.VITE_REACT_APP_AUTHDOMAIN,
   projectId: import.meta.env.VITE_REACT_APP_PROJECT_ID,
@@ -19,7 +19,10 @@ const firebaseApp = {
 const app = initializeApp(firebaseConfig);
 
 // DataBase
-const db = getFirestore(app);
+export const db = getFirestore(app);
+
 
 // auth
-const auth = getAuth(firebaseApp);
+// export const auth = getAuth(app);
+
+export default db;
