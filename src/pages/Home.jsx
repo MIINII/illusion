@@ -14,31 +14,32 @@ import { useModal } from '@/hooks';
 const Home = () => {
   const [modalOption, showModal] = useModal();
 
+  const incomeOption = {
+    show: true,
+    type: ['용돈', '월급', '줍줍', '기타'],
+    title: '놀랍게도 수입이 있어요!🥰',
+    placeholder: '혹시나 들어온 돈이 있나요?',
+    btnTitle: '돈이 들어왔따!ㅋㅋ',
+    onSubmit: () => {},
+    element: null,
+  };
+
+  const outOption = {
+    show: true,
+    type: ['외식', '쇼핑', '선물', '기타'],
+    title: '돈을 또 어디다 쓰셨나요 🤮 ',
+    placeholder: '에휴 또 얼마나 쓰셨어요',
+    btnTitle: '카드값 확인 부탁드립니다.',
+    onSubmit: () => {},
+    element: null,
+  };
+
   const onClick = useCallback(() => {
-    const income = ['용돈', '월급', '줍줍', '기타'];
-    const out = ['외식', '쇼핑', '선물', '기타'];
+    const selectionStatus = { ...incomeOption }; // 선택 상태를 복사
 
-    const incomeOption = {
-      show: true,
-      type: ['용돈', '월급', '줍줍', '기타'],
-      title: '놀랍게도 수입이 있어요!🥰',
-      placeholder: '혹시나 들어온 돈이 있나요?',
-      btnTitle: '돈이 들어왔따!ㅋㅋ',
-      onSubmit: () => {},
-      element: null,
-    };
+    showModal(selectionStatus);
+  }, [showModal]);
 
-    // showModal(
-    //   true,
-    //   income,
-    //   '놀랍게도 수입이 있어요!🥰',
-    //   '혹시나 들어온 돈이 있나요?',
-    //   '돈이 들어왔따!ㅋㅋ',
-    //   () => console.log('모달 on'),
-    //   null
-    // );
-    showModal(incomeOption);
-  }, [modalOption]);
   /** useEffect(() => {
     document.body.style = `overflow:hidden`;
     return () => (document.body.style = `overflow:auto`);
@@ -60,7 +61,7 @@ const Home = () => {
 
         <div>
           <BudgetButton
-            onClick={onClick}
+            btnClick={onClick}
             btnImg={goneMoney}
             btnName={'내 손을 떠난 돈'}
             btnNameEng={'Expenditure'}

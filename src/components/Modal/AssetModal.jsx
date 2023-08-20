@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Logo from '@/assets/logo.svg';
 
 export const AssetModal = ({ modalOption }) => {
+  console.log('🚀 ⁝ AssetModal ⁝ modalOption:', modalOption)
   return (
     <>
       {modalOption?.show && (
@@ -17,10 +18,10 @@ export const AssetModal = ({ modalOption }) => {
           <div className={styles.ModalBox}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <img src={Logo} width={'150px'} />
-              <h3>{modalOption.title}</h3>
+              <h3>{modalOption.show.title}</h3>
             </div>
 
-            <BudgetInput placeHolder={modalOption.placeholder} />
+            <BudgetInput placeHolder={modalOption.show.placeholder} />
 
             <div
               style={{
@@ -31,13 +32,13 @@ export const AssetModal = ({ modalOption }) => {
                 marginTop: '20px',
               }}
             >
-              {modalOption.type.map((list) => (
+              {modalOption.show.type.map((list) => (
                 <CheckBox radioValue={list} key={uuidv4()} />
               ))}
             </div>
 
             <div className={styles.BtnWrapper}>
-              <PrimaryButton BtnName={modalOption.btnTitle} />
+              <PrimaryButton BtnName={modalOption.show.btnTitle} />
               <SecondButton BtnName={'취소'} onClick={modalOption.onClose} />
             </div>
           </div>
